@@ -21,12 +21,10 @@ const guardarBD = () => {
 
 const crear = descripcion => {
     cargarBD();
-
     let porhacer = {
         descripcion,
         completado: 'false'
     };
-
     listadoPorHacer.push(porhacer);
     guardarBD();
 
@@ -35,9 +33,7 @@ const crear = descripcion => {
 
 const obtenerListado = completado => {
     cargarBD();
-
     let nuevaLista;
-
     if (completado == 'all')
         nuevaLista = listadoPorHacer;
     else
@@ -48,9 +44,7 @@ const obtenerListado = completado => {
 
 const actualizar = (descripcion, completado = true) => {
     cargarBD();
-
     const index = listadoPorHacer.findIndex(tarea => tarea.descripcion == descripcion);
-
     if (index >= 0) {
         listadoPorHacer[index].completado = completado;
         guardarBD();
@@ -62,9 +56,7 @@ const actualizar = (descripcion, completado = true) => {
 
 const eliminar = descripcion => {
     cargarBD();
-
     let nuevaLista = listadoPorHacer.filter(tarea => tarea.descripcion !== descripcion);
-
     if (nuevaLista.length !== listadoPorHacer.length) {
         listadoPorHacer = nuevaLista;
         guardarBD();
